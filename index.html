@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jurizare Concursuri · STEAM EXPERIENCE 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#111210; --ink-soft:#4A4A48; --ink-muted:#888884;
+  --bg:#F4F1EB; --cream:#FDFBF6; --gold:#C8A84B;
+  --c1:#1F3D28; --c1m:#2D5A3A; --c1l:#4A8C5C; --c1bg:#EAF2EC;
+  --c2:#5B3A10; --c2m:#8B5A1A; --c2l:#C8894A; --c2bg:#F5EDE0;
+  --c3:#0B3450; --c3m:#1A5C8A; --c3l:#3A9BD5; --c3bg:#E0EEF7;
+  --c4:#3D1A5A; --c4m:#6A2D9A; --c4l:#9B5BD5; --c4bg:#EDE0F7;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:280px;background:var(--ink);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;}
+.hero-canvas{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 75% 30%,rgba(200,168,75,.12) 0%,transparent 65%),radial-gradient(ellipse 50% 80% at 5% 85%,rgba(74,140,92,.1) 0%,transparent 55%),linear-gradient(150deg,#0D1810 0%,#131313 45%,#0A1E30 100%);}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(200,168,75,.06) 1px,transparent 1px);background-size:28px 28px;}
+.hero-inner{position:relative;z-index:2;padding:52px 64px 44px;max-width:860px;}
+.hero-badge{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.hero-badge::before{content:'';display:inline-block;width:20px;height:1px;background:var(--gold);}
+.hero-title{font-family:'Syne',sans-serif;font-size:clamp(30px,4.5vw,54px);font-weight:800;line-height:.95;letter-spacing:-2px;color:#fff;margin-bottom:14px;}
+.hero-title em{font-style:normal;color:var(--gold);}
+.hero-sub{font-size:13.5px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.6;max-width:560px;margin-bottom:24px;}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap;}
+.hero-pill{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:5px 11px;border-radius:2px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.65);}
+.hero-stripe{height:4px;background:linear-gradient(90deg,var(--c1l) 0 33%,var(--c4l) 33% 66%,var(--gold) 66% 100%);}
+
+/* ── NAV ── */
+.nav{background:var(--cream);border-bottom:1px solid rgba(0,0,0,.08);padding:0 64px;display:flex;gap:0;overflow-x:auto;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.nav-btn{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:.5px;padding:14px 20px;border:none;background:none;cursor:pointer;color:var(--ink-muted);border-bottom:3px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;}
+.nav-btn.active{color:var(--ink);border-bottom-color:var(--gold);}
+.nav-btn:hover{color:var(--ink);}
+
+/* ── SECTIONS ── */
+.section{display:none;padding:40px 64px 60px;}
+.section.active{display:block;}
+
+/* ── SHEETS BANNER ── */
+.sheets-banner{background:var(--ink);border-radius:6px;padding:22px 28px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.sb-left{flex:1;min-width:200px;}
+.sb-eyebrow{font-size:9.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.sb-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;margin-bottom:3px;}
+.sb-note{font-size:11.5px;color:rgba(255,255,255,.4);font-weight:300;}
+.sb-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:3px;background:var(--gold);color:var(--ink);font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;transition:opacity .15s;}
+.sb-btn:hover{opacity:.88;}
+.sb-btn-sec{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:3px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);font-size:12px;font-weight:500;text-decoration:none;white-space:nowrap;transition:opacity .15s;margin-left:8px;}
+.sb-btn-sec:hover{opacity:.8;}
+
+/* ── SECTION TITLE ── */
+.sec-head{display:flex;align-items:baseline;gap:12px;padding-bottom:18px;border-bottom:1px solid rgba(0,0,0,.07);margin-bottom:24px;}
+.sec-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;}
+.sec-count{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-muted);}
+
+/* ── CRITERIA ROW ── */
+.criteria-strip{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.crit{padding:8px 12px;border-radius:3px;font-size:11px;border-left:3px solid currentColor;}
+.crit-label{font-weight:600;margin-bottom:1px;}
+.crit-desc{font-weight:300;color:var(--ink-soft);font-size:10.5px;}
+.crit-max{font-family:'Syne',sans-serif;font-weight:800;font-size:13px;float:right;}
+
+/* ── TABLE ── */
+.tbl-wrap{overflow-x:auto;border-radius:4px;box-shadow:0 2px 16px rgba(0,0,0,.06);}
+table{width:100%;border-collapse:collapse;font-size:12px;background:white;}
+thead th{background:var(--bg);font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-muted);padding:10px 11px;text-align:left;border-bottom:2px solid rgba(0,0,0,.09);white-space:nowrap;position:sticky;top:53px;}
+tbody td{padding:10px 11px;border-bottom:1px solid rgba(0,0,0,.05);vertical-align:top;line-height:1.4;}
+tbody tr:hover td{background:rgba(0,0,0,.012);}
+tbody tr:last-child td{border-bottom:none;}
+
+/* col widths */
+.c-nr{width:32px;font-family:'Syne',sans-serif;font-weight:800;color:var(--ink-muted);font-size:13px;}
+.c-team{font-weight:600;color:var(--ink);min-width:110px;}
+.c-title{color:var(--ink-soft);min-width:200px;font-size:11.5px;}
+.c-coord{min-width:120px;font-size:11.5px;}
+.c-members{min-width:180px;font-size:11px;color:var(--ink-soft);}
+.c-school{min-width:130px;font-size:11px;}
+.c-loc{font-size:11px;white-space:nowrap;}
+.c-link a{font-size:11px;font-weight:500;text-decoration:none;padding:3px 8px;border-radius:2px;display:inline-flex;align-items:center;gap:4px;}
+.c-link a:hover{opacity:.8;}
+.c-flag{text-align:center;font-size:11px;font-weight:600;white-space:nowrap;}
+.c-flag.flag-warn{color:#B85A00;background:#FFF3E0;border-radius:2px;padding:2px 6px;}
+.c-flag.flag-ok{color:var(--c1m);background:var(--c1bg);border-radius:2px;padding:2px 6px;}
+
+/* ── FOOTER ── */
+.footer{background:var(--ink);color:white;padding:32px 64px;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;margin-top:40px;}
+.footer-brand{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--gold);margin-bottom:4px;}
+.footer-text{font-size:11px;color:rgba(255,255,255,.35);line-height:1.6;max-width:400px;}
+.footer-links a{display:block;font-size:12px;color:rgba(200,168,75,.75);text-decoration:none;margin-bottom:4px;}
+
+@media(max-width:800px){
+  .hero-inner,.nav,.section,.footer{padding-left:20px;padding-right:20px;}
+  .nav{padding:0 12px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-canvas"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">STEAM EXPERIENCE · Document intern · Uz jurizare · Mai–Iunie 2026</div>
+    <h1 class="hero-title">Inventar &amp;<br><em>grilă jurizare</em></h1>
+    <p class="hero-sub">Înregistrările reale din formularele de înscriere, organizate pentru jurizare. Coloanele de notare se completează direct în Google Sheets.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">🌍 Be a STEAMER — 12 proiecte</span>
+      <span class="hero-pill">📓 Jurnal de Bord — 23 proiecte</span>
+      <span class="hero-pill">⏱ Termen depunere: 15 mai 2026</span>
+      <span class="hero-pill">🏆 Anunțare: 8 iunie 2026</span>
+    </div>
+  </div>
+</div>
+<div class="hero-stripe"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <button class="nav-btn active" onclick="showTab('steamer',this)">🌍 Be a STEAMER (12)</button>
+  <button class="nav-btn" onclick="showTab('jurnal',this)">📓 Jurnal de Bord (23)</button>
+  <button class="nav-btn" onclick="showTab('sumar',this)">📊 Sumar general</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  TAB 1 — BE A STEAMER                             -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div id="tab-steamer" class="section active">
+
+  <div class="sheets-banner">
+    <div class="sb-left">
+      <div class="sb-eyebrow">Google Sheets · Grilă de notare</div>
+      <div class="sb-title">🌍 Be a STEAMER – Grilă jurizare 2026</div>
+      <div class="sb-note">Deschideți Sheets-ul pentru a introduce scorurile. Coloanele C1–C5 + TOTAL + Premiu + Observații.</div>
+    </div>
+    <div>
+      <a class="sb-btn" href="https://docs.google.com/spreadsheets/d/15HA7qbZTWixhdw6MkU3x5D34tuic8zUS4iQsXUqnRgc/edit" target="_blank">✏️ Deschide Sheets →</a>
+      <a class="sb-btn-sec" href="https://docs.google.com/spreadsheets/d/15HA7qbZTWixhdw6MkU3x5D34tuic8zUS4iQsXUqnRgc/export?format=xlsx" target="_blank">⬇ Excel</a>
+    </div>
+  </div>
+
+  <div class="sec-head">
+    <span class="sec-title">🌍 Be a STEAMER — 12 proiecte depuse</span>
+    <span class="sec-count">Termen: 15 mai 2026 · Coordonator: INCDFP – GeoEduLab</span>
+  </div>
+
+  <div class="criteria-strip">
+    <div class="crit" style="color:var(--c1l);background:var(--c1bg);flex:1;min-width:140px;">
+      <span class="crit-max">25p</span>
+      <div class="crit-label">C1 · Corectitudine științifică</div>
+      <div class="crit-desc">Acuratețea hazard/vulnerabilitate/risc, terminologie, raționament</div>
+    </div>
+    <div class="crit" style="color:var(--c1l);background:var(--c1bg);flex:1;min-width:140px;">
+      <span class="crit-max">25p</span>
+      <div class="crit-label">C2 · Calitatea hărții</div>
+      <div class="crit-desc">Claritate vizuală, legendă, georeferențiere, completitudine</div>
+    </div>
+    <div class="crit" style="color:var(--c1l);background:var(--c1bg);flex:1;min-width:130px;">
+      <span class="crit-max">20p</span>
+      <div class="crit-label">C3 · Date & metodologie teren</div>
+      <div class="crit-desc">Dovezi activitate teren, surse, metodă documentată</div>
+    </div>
+    <div class="crit" style="color:var(--c1l);background:var(--c1bg);flex:1;min-width:130px;">
+      <span class="crit-max">20p</span>
+      <div class="crit-label">C4 · Relevanță locală</div>
+      <div class="crit-desc">Conexiunea cu comunitatea reală, zona de risc identificată</div>
+    </div>
+    <div class="crit" style="color:var(--c1l);background:var(--c1bg);flex:1;min-width:110px;">
+      <span class="crit-max">10p</span>
+      <div class="crit-label">C5 · Prezentare</div>
+      <div class="crit-desc">Claritate, structură, calitate vizuală</div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th class="c-nr">#</th>
+        <th>Nume echipă</th>
+        <th>Subiect proiect</th>
+        <th>Profesor coordonator</th>
+        <th>Membri echipă (elevi)</th>
+        <th>Nr.</th>
+        <th>Cls.</th>
+        <th>Școală</th>
+        <th>Județ</th>
+        <th>Fișier proiect</th>
+        <th>⚠ Atenție</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="c-nr">1</td>
+        <td class="c-team">TerraBots</td>
+        <td class="c-title">Risc seismic Focșani (zona Vrancea) — bloc Aleea Școlii 12 + robot salvator DIY cu microfoane</td>
+        <td class="c-coord">Profiroiu Carmen<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Vrancea</span></td>
+        <td class="c-members">Denis Francesco Hănțoiu (cls. X)<br>Vlad Andrei Palade (cls. IX)<br>Iustin-Gabriel Ilea (cls. XI)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">IX–XI</td>
+        <td class="c-school">Col. Economic Mihail Kogălniceanu</td>
+        <td class="c-loc">Focșani</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1thb5ZwGuXAo_-IFKfpnSyQ7yYyOcu2nW" target="_blank" style="color:var(--c1m);background:var(--c1bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">2</td>
+        <td class="c-team">Green Vibe</td>
+        <td class="c-title">Soluții sustenabile (abstract nedetaliat — verificați fișierul)</td>
+        <td class="c-coord">Niste Simona<br><span style="font-size:10px;color:var(--ink-muted);">Poluare mediu · Cluj</span></td>
+        <td class="c-members">Luput Dalia (cls. X)<br>Rus Flavia (cls. X)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">X</td>
+        <td class="c-school">Col. Tehnic Ana Aslan</td>
+        <td class="c-loc">Cluj-Napoca</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=120lVW5Pzr9TRbCn0YUB115UVxCk-5D7h" target="_blank" style="color:var(--c1m);background:var(--c1bg);">📄 Drive</a></td>
+        <td class="c-flag flag-warn">⚠ abstract lipsă</td>
+      </tr>
+      <tr>
+        <td class="c-nr">3</td>
+        <td class="c-team">Investigatorii</td>
+        <td class="c-title">Vulnerabilitate sit geologic Aven Sânmartin — stabilitate sol + promovare turistică</td>
+        <td class="c-coord">Maghiar Ramona<br><span style="font-size:10px;color:var(--ink-muted);">Biologie · Bihor</span></td>
+        <td class="c-members">Iordan Delia (cls. IX)<br>Pituțiu Raluca (cls. IX)<br>Pleșa Rebecca (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">CN Mihai Eminescu</td>
+        <td class="c-loc">Oradea</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1IebjoVuz8JfdwtxoTwXnaOUFQmGnvqdR" target="_blank" style="color:var(--c1m);background:var(--c1bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">4</td>
+        <td class="c-team">H2O-Sapiens</td>
+        <td class="c-title">Risc inundații București — urbanizare, suprafețe impermeabile, soluții Sponge City (Sentinel-2)</td>
+        <td class="c-coord">Stoica Ioana<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · București</span></td>
+        <td class="c-members">Poienariu Maria-Natalia (cls. IX)<br>Vlad Maria (cls. IX)<br>Vrânceanu Sofia-Maria (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">CNI Tudor Vianu</td>
+        <td class="c-loc">Sector 1</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1uE1li7E3eN911hETUi1s8hbPBYtqO1Oi" target="_blank" style="color:var(--c1m);background:var(--c1bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">5</td>
+        <td class="c-team">The EcoForce</td>
+        <td class="c-title">Proiect mediu / sustenabilitate (abstract necompletat — verificați fișierul)</td>
+        <td class="c-coord">Niste Simona<br><span style="font-size:10px;color:var(--ink-muted);">Poluare mediu · Cluj</span></td>
+        <td class="c-members">Mihu Denisa Maria (cls. X)<br>Sinko Diana Sonia (cls. X)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">X</td>
+        <td class="c-school">Col. Tehnic Ana Aslan</td>
+        <td class="c-loc">Cluj-Napoca</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1C8sFzFLhCt_y9d-9jrxqxqdCuWcPRyoT" target="_blank" style="color:var(--c1m);background:var(--c1bg);">📄 Drive</a></td>
+        <td class="c-flag flag-warn">⚠ abstract lipsă</td>
+      </tr>
+      <tr>
+        <td class="c-nr">6</td>
+        <td class="c-team">Unirea 7.2</td>
+        <td class="c-title">Risc seismic Pașcani (Vrancea) — geologie, infrastructură, fond locativ vechi; hartă ArcGIS interactivă</td>
+        <td class="c-coord">Elefteriu Crina Aurelia<br><span style="font-size:10px;color:var(--ink-muted);">Geografie · Iași</span></td>
+        <td class="c-members">Bolohan Denisa Maria<br>Iftimia Florin Giuliano<br>Ursu Denisa Vasilica (cls. X C)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">X</td>
+        <td class="c-school">Col. Tehnic CF Unirea Pașcani</td>
+        <td class="c-loc">Pașcani</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1ipVQ1Ts1vYSSpI2VmAG6pr9R9NBX3aaq" target="_blank" style="color:var(--c1m);background:var(--c1bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">7</td>
+        <td class="c-team">CLEAR STREAM RESTORE</td>
+        <td class="c-title">Poluarea pârâului Dâmbu, Ploiești — cauze inundații, deșeuri, soluții revitalizare</td>
+        <td class="c-coord">Magnea Adela<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Prahova</span></td>
+        <td class="c-members">Gîlcă Emma Bianca (cls. X)<br>Ticuță Emma Ioana (cls. X)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">X</td>
+        <td class="c-school">CN Nichita Stănescu</td>
+        <td class="c-loc">Ploiești</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1xHkCf5f9nk1wWD_F__nWUlLVg6EbU3Jb" target="_blank" style="color:var(--c1m);background:var(--c1bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">8</td>
+        <td class="c-team">Eco Duo</td>
+        <td class="c-title">Proiect mediu / sustenabilitate (abstract necompletat — verificați fișierul)</td>
+        <td class="c-coord">Niste Simona<br><span style="font-size:10px;color:var(--ink-muted);">Poluare mediu · Cluj</span></td>
+        <td class="c-members">Florea Sorina (cls. X)<br>Oniga Miruna (cls. X)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">X</td>
+        <td class="c-school">Col. Tehnic Ana Aslan</td>
+        <td class="c-loc">Cluj-Napoca</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1vPixfd2oBOk95is3YGIKSG5gqQumuxJK" target="_blank" style="color:var(--c1m);background:var(--c1bg);">📄 Drive</a></td>
+        <td class="c-flag flag-warn">⚠ abstract lipsă</td>
+      </tr>
+      <tr>
+        <td class="c-nr">9</td>
+        <td class="c-team">Geo Explo Unirea</td>
+        <td class="c-title">Hazard geomorfologic — alunecări de teren zona Pașcani: cauze, efecte, prevenire</td>
+        <td class="c-coord">Elefteriu Crina Aurelia<br><span style="font-size:10px;color:var(--ink-muted);">Geografie · Iași</span></td>
+        <td class="c-members">Baba Radu Costel<br>Mânjescu Ioana-Ștefania<br>Pîslariu Denisa (cls. X C)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">X</td>
+        <td class="c-school">Col. Tehnic CF Unirea Pașcani</td>
+        <td class="c-loc">Pașcani</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1HegCN812_Lao68pX2Kf4Ff2VP1tUh-Zu" target="_blank" style="color:var(--c1m);background:var(--c1bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">10</td>
+        <td class="c-team">Sentinel Explorers</td>
+        <td class="c-title">Vulnerabilitate Canal Plantelor Giurgiu la secetă — analiză satelitară Sentinel-2 / NDWI (2022–2025)</td>
+        <td class="c-coord">Anghel Cristina Iulia<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Giurgiu</span></td>
+        <td class="c-members">Tudosie Ana Maria (cls. XI)<br>Dobra Mario Valentin (cls. XI)<br>Burcea Cătălin Ștefan (cls. XI)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">XI</td>
+        <td class="c-school">Liceul Teoretic Tudor Vianu</td>
+        <td class="c-loc">Giurgiu</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1df9oluU338dFmKYW-Pgi3lp_bYNKEO3I" target="_blank" style="color:var(--c1m);background:var(--c1bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">11</td>
+        <td class="c-team" style="font-size:10.5px;color:var(--ink-muted);">(fără nume echipă)</td>
+        <td class="c-title">Calitatea aerului Pașcani — audit telemetric 373.403 înregistrări, senzori, analiză AI Big Data</td>
+        <td class="c-coord">Elefteriu Crina Aurelia<br><span style="font-size:10px;color:var(--ink-muted);">Geografie · Iași</span></td>
+        <td class="c-members">Balcan Andrei (cls. X C)<br><em style="font-size:10px;color:var(--ink-muted);">participare individuală</em></td>
+        <td style="text-align:center;font-weight:600;">1</td>
+        <td style="text-align:center;">X</td>
+        <td class="c-school">Col. Tehnic CF Unirea Pașcani</td>
+        <td class="c-loc">Pașcani</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1hs_ZEpd9kzslCu68DyfukbG10SQRzTis" target="_blank" style="color:var(--c1m);background:var(--c1bg);">📄 Drive</a></td>
+        <td class="c-flag flag-warn">⚠ temă Detectivii?</td>
+      </tr>
+      <tr>
+        <td class="c-nr">12</td>
+        <td class="c-team">ARGINTUL VIU</td>
+        <td class="c-title">Poluare metale grele zona Turda — sol/plante, vizualizare GIS interactivă (Google My Maps)</td>
+        <td class="c-coord">Rus Maria<br><span style="font-size:10px;color:var(--ink-muted);">Geografie · Cluj</span></td>
+        <td class="c-members">Bogdan Duca (cls. IX)<br>Dragoș Oltean (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">Col. Tehnic Victor Ungureanu</td>
+        <td class="c-loc">Câmpia Turzii</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1qjqXi12UlcaM-ZSL-2nvX2hv_cdlIVrY" target="_blank" style="color:var(--c1m);background:var(--c1bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:11px;color:var(--ink-muted);margin-top:10px;padding-left:4px;">* Coloanele de notare (C1–C5, TOTAL, Premiu, Observații) se completează în Google Sheets. <a href="https://docs.google.com/spreadsheets/d/15HA7qbZTWixhdw6MkU3x5D34tuic8zUS4iQsXUqnRgc/edit" target="_blank" style="color:var(--c1m);">Deschide grila →</a></p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  TAB 2 — JURNAL DE BORD                           -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div id="tab-jurnal" class="section">
+
+  <div class="sheets-banner">
+    <div class="sb-left">
+      <div class="sb-eyebrow">Google Sheets · Grilă de notare</div>
+      <div class="sb-title">📓 Jurnal de Bord – Grilă jurizare 2026</div>
+      <div class="sb-note">Deschideți Sheets-ul pentru a introduce scorurile. Coloanele C1–C4 + TOTAL + Premiu + Observații.</div>
+    </div>
+    <div>
+      <a class="sb-btn" href="https://docs.google.com/spreadsheets/d/1y7O29NECR5_uX15FqVQ70P7JT9RTAqb9hRsNnniHlRw/edit" target="_blank">✏️ Deschide Sheets →</a>
+      <a class="sb-btn-sec" href="https://docs.google.com/spreadsheets/d/1y7O29NECR5_uX15FqVQ70P7JT9RTAqb9hRsNnniHlRw/export?format=xlsx" target="_blank">⬇ Excel</a>
+    </div>
+  </div>
+
+  <div class="sec-head">
+    <span class="sec-title">📓 Jurnal de Bord — 23 proiecte depuse</span>
+    <span class="sec-count">Activitate bonus · Comunicarea Științei · Deschis tuturor echipelor</span>
+  </div>
+
+  <div class="criteria-strip">
+    <div class="crit" style="color:var(--c4l);background:var(--c4bg);flex:1;min-width:150px;">
+      <span class="crit-max">30p</span>
+      <div class="crit-label">C1 · Comunicare accesibilă</div>
+      <div class="crit-desc">Explicarea procesului științific pentru publicul larg</div>
+    </div>
+    <div class="crit" style="color:var(--c4l);background:var(--c4bg);flex:1;min-width:140px;">
+      <span class="crit-max">25p</span>
+      <div class="crit-label">C2 · Creativitate & format</div>
+      <div class="crit-desc">Originalitate: video, infografic, blog, social media etc.</div>
+    </div>
+    <div class="crit" style="color:var(--c4l);background:var(--c4bg);flex:1;min-width:140px;">
+      <span class="crit-max">25p</span>
+      <div class="crit-label">C3 · Conținut științific</div>
+      <div class="crit-desc">Acuratețea informațiilor și reflectarea demersului de cercetare</div>
+    </div>
+    <div class="crit" style="color:var(--c4l);background:var(--c4bg);flex:1;min-width:140px;">
+      <span class="crit-max">20p</span>
+      <div class="crit-label">C4 · Completitudine</div>
+      <div class="crit-desc">Toate etapele prezente: ipoteză, metodă, date, concluzii</div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th class="c-nr">#</th>
+        <th>Nume echipă</th>
+        <th>Subiect jurnal</th>
+        <th>Profesor coordonator</th>
+        <th>Membri echipă (elevi)</th>
+        <th>Nr.</th>
+        <th>Cls.</th>
+        <th>Școală</th>
+        <th>Județ</th>
+        <th>Fișier proiect</th>
+        <th>⚠ Atenție</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="c-nr">1</td>
+        <td class="c-team">TerraSeismo</td>
+        <td class="c-title">Risc seismic bloc Focșani + concept robot salvare cu senzori</td>
+        <td class="c-coord">Duță Tatiana<br><span style="font-size:10px;color:var(--ink-muted);">Psihologie · Vrancea</span></td>
+        <td class="c-members">Țâru Darius Mihai (cls. IX)<br>Piftor Matei Alexandru (cls. X)<br>Palade Vlad Andrei (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">IX–X</td>
+        <td class="c-school">Col. Economic M. Kogălniceanu</td>
+        <td class="c-loc">Focșani</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1PotNbgIKdzg6_lNXZcP5ilC6u0bJhCJo" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">2</td>
+        <td class="c-team">H2O-Salvarea apei!</td>
+        <td class="c-title">Investigarea calității apei — experiment în laborator INCDFP / Institut Știința Materialelor</td>
+        <td class="c-coord">Ungureanu Ioana<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Ilfov</span></td>
+        <td class="c-members">Zgura Alexandru<br>Tihan Irina<br>Ion Irina (cls. VII)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">VII</td>
+        <td class="c-school">Liceul Teoretic Horia Hulubei</td>
+        <td class="c-loc">Măgurele</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1Y8zCEXfkbVDRvLneoS-Ng4Y-0atnOn7H" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">3</td>
+        <td class="c-team">(individual)</td>
+        <td class="c-title">Studiu geografie fizică — sistem hidrogeologic mineral Săcelu + metodă microseismică activă (FGG București)</td>
+        <td class="c-coord">Spînu Maria<br><span style="font-size:10px;color:var(--ink-muted);">Geografie · Gorj</span></td>
+        <td class="c-members">Gorun Ioan-Alexandru (cls. XII)<br><em style='font-size:10px;color:var(--ink-muted);'>participare individuală</em></td>
+        <td style="text-align:center;font-weight:600;">1</td>
+        <td style="text-align:center;">XII</td>
+        <td class="c-school">CN Tudor Vladimirescu</td>
+        <td class="c-loc">Târgu Jiu</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=10S0PevepSRjTMEr-JAmbAQBSwGj8I1F5" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">4</td>
+        <td class="c-team">Cercetătorii C&amp;A</td>
+        <td class="c-title">Poluarea și degradarea Insulei Cotu Mic Lugoj — inundații 2020, ecologizare, ecosistem riparian</td>
+        <td class="c-coord">Boldea Maria Lucia<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Timiș</span></td>
+        <td class="c-members">Magu-Borka Carla Alexia (cls. IX)<br>Toader Amalia Gabriela (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">Liceul Teoretic Coriolan Brediceanu</td>
+        <td class="c-loc">Lugoj</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1s52BWplUrYEcDQmiDet80XgxVQMtzOmA" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">5</td>
+        <td class="c-team">TIRI MIRI</td>
+        <td class="c-title">Poluarea râului Timiș Lugoj — ape uzate, canalizare insuficientă, mini-stații epurare</td>
+        <td class="c-coord">Boldea Maria Lucia<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Timiș</span></td>
+        <td class="c-members">Dobîndă Theodora Maria (cls. IX)<br>Spătaru Emilia Damaris (cls. IX)<br>Albu Medeea (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">Liceul Teoretic Coriolan Brediceanu</td>
+        <td class="c-loc">Lugoj</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1My_hffurTR1NK7v1ceiCE9efeFTSXe4J" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">6</td>
+        <td class="c-team">Ecologistii67</td>
+        <td class="c-title">Poluarea solului zona Lugoj — cauze, efecte, soluții</td>
+        <td class="c-coord">Boldea Maria Lucia<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Timiș</span></td>
+        <td class="c-members">Clepe Miruna (cls. IX)<br>Valocsik Wanessa-Maria (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">Liceul Teoretic Coriolan Brediceanu</td>
+        <td class="c-loc">Lugoj</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1S01z2batESa7MqlFhU8w_YeCck5orvev" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">7</td>
+        <td class="c-team">Bredistars</td>
+        <td class="c-title">Poluarea râului Timiș — identificare problemă și soluții propuse</td>
+        <td class="c-coord">Boldea Maria Lucia<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Timiș</span></td>
+        <td class="c-members">Stremciuc Andreea Maria (cls. IX)<br>Lăudăcescu Briana Ștefania (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">Liceul Teoretic Coriolan Brediceanu</td>
+        <td class="c-loc">Lugoj</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=19ubzHUIigWyHhZA5WqkeIoRdqXB4blI_" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">8</td>
+        <td class="c-team">Victoriosi</td>
+        <td class="c-title">Poluarea aerului — groapa de gunoi Ghizela, impact județ Timiș</td>
+        <td class="c-coord">Boldea Maria Lucia<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Timiș</span></td>
+        <td class="c-members">Lazar Bogdan Alexandru (cls. IX)<br>Piseru Andrada (cls. IX B)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">Liceul Teoretic Coriolan Brediceanu</td>
+        <td class="c-loc">Lugoj</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1xlmRpBcgck0F2dUcMi2aprMbOrAfh76n" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">9</td>
+        <td class="c-team">Iorgo si Van</td>
+        <td class="c-title">Degradarea Podului de Fier Lugoj — patrimoniu local, stare actuală, necesitate restaurare</td>
+        <td class="c-coord">Boldea Lucia<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Timiș</span></td>
+        <td class="c-members">Iorgovan Darius (cls. IX)<br>Sîrbu Fabian (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">Liceul Teoretic Coriolan Brediceanu</td>
+        <td class="c-loc">Lugoj</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1UiaN3VQTPJ7uOPR5FzFQR8qX3Ssvbta5" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">10</td>
+        <td class="c-team">Cercetătorii aerului curat</td>
+        <td class="c-title">Poluarea aerului urban Lugoj — trafic rutier, impact sănătate, soluții propuse</td>
+        <td class="c-coord">Boldea Maria Lucia<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Timiș</span></td>
+        <td class="c-members">Lemeni Teodora Ioana (cls. IX)<br>Bucur Georgiana Adriana (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">Liceul Teoretic Coriolan Brediceanu</td>
+        <td class="c-loc">Lugoj</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1vayCRb0SmRkuJmjg68T4J4iXiULFfxxm" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">11</td>
+        <td class="c-team">HONOLULU</td>
+        <td class="c-title">Poluarea malurilor râului Timiș Lugoj — deșeuri, viituri, ecosistem riparian, restaurare</td>
+        <td class="c-coord">Boldea Maria Lucia<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Timiș</span></td>
+        <td class="c-members">Dina Adrian Gabriel (cls. IX)<br>Zarici Roberto (cls. IX)<br>Bogasieru Ștefan Adrian (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">Liceul Teoretic Coriolan Brediceanu</td>
+        <td class="c-loc">Lugoj</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1C4RYUqPftQocQfo4gH4WrTWfst7FiBOk" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">12</td>
+        <td class="c-team">Matcha</td>
+        <td class="c-title">Poluarea episodică — efecte mediu și sănătate, surse identificate</td>
+        <td class="c-coord">Boldea Maria Lucia<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Timiș</span></td>
+        <td class="c-members">Damșa Teodora-Alesia (cls. IX)<br>Murariu Lois (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">Liceul Teoretic Coriolan Brediceanu</td>
+        <td class="c-loc">Lugoj</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1HiitKFIlyQ0kdGGgGqc-_AtQ1GfZU2VO" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">13</td>
+        <td class="c-team">Bioexploratorii</td>
+        <td class="c-title">Clonarea plantelor — interviu specialist Universitatea Oradea, documentare laborator (video)</td>
+        <td class="c-coord">Maghiar Ramona<br><span style="font-size:10px;color:var(--ink-muted);">Biologie · Bihor</span></td>
+        <td class="c-members">Rebegilă Denisa (cls. IX)<br>Duma Alexandra (cls. IX)<br>Tor Gloria (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">CN Mihai Eminescu</td>
+        <td class="c-loc">Oradea</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=12CIF3TWsd4UeZpzxNjL95KPhkcX1J27o" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">14</td>
+        <td class="c-team">LUPY</td>
+        <td class="c-title">Poluarea industrială Lugoj — efecte fabrici, soluții (filtre smart, perdele forestiere, epurare)</td>
+        <td class="c-coord">Boldea Maria Lucia<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Timiș</span></td>
+        <td class="c-members">Tonenchi Luca Grigore (cls. IX)<br>Bobic Ianis (cls. IX)<br>Jurjoni Rareș (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">Liceul Teoretic Coriolan Brediceanu</td>
+        <td class="c-loc">Lugoj</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=12mhkDCvqDPqABGiJIvelwfLIjH71Q3ZX" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">15</td>
+        <td class="c-team">A.M.A</td>
+        <td class="c-title">Sistem hibrid energie regenerabilă — panouri fotovoltaice plutitoare + microturbină hidro, prototip funcțional</td>
+        <td class="c-coord">Constantin Elena Mădălina<br><span style="font-size:10px;color:var(--ink-muted);">Geografie · Brașov</span></td>
+        <td class="c-members">Dragomir Anastasia (cls. VIII)<br>Copaciu Iulia Maria (cls. VII)<br>Dragomir Alexandru (cls. VII)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">VII–VIII</td>
+        <td class="c-school">CNI Grigore Moisil</td>
+        <td class="c-loc">Brașov</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1JPjQBeMkeJrs0WWrC7v0GIAvHXV0nvGf" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">16</td>
+        <td class="c-team">BioGreen Team</td>
+        <td class="c-title">Cercetarea în agricultură și resurse naturale — interviu Dr. Florentina Ionela Vlad (SCDL Buzău)</td>
+        <td class="c-coord">Chircu Mihaela<br><span style="font-size:10px;color:var(--ink-muted);">Biologie · Buzău</span></td>
+        <td class="c-members">Sîrbu Ana Maria (cls. X)<br>Avramescu Laura Nicoleta (cls. X)<br>Neculai Georgiana Roxana (cls. X)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">X</td>
+        <td class="c-school">Liceul Tehnologic Henri Coandă</td>
+        <td class="c-loc">Buzău</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=16Br0Hvhb_lG7iRE9ANw0E2jV-hwWWpjJ" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">17</td>
+        <td class="c-team">Green Vision</td>
+        <td class="c-title">Cultivarea sustenabilă microplante busuioc pe hârtie reciclată — experiment practic</td>
+        <td class="c-coord">Niste Simona<br><span style="font-size:10px;color:var(--ink-muted);">Poluare mediu · Cluj</span></td>
+        <td class="c-members">Ghior Sara (cls. X)<br>Rosu Delia (cls. X)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">X</td>
+        <td class="c-school">Col. Tehnic Ana Aslan</td>
+        <td class="c-loc">Cluj-Napoca</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=15Y8kUbo-G9UwRxpbtoRAU0jY6rVe9GEe" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">18</td>
+        <td class="c-team">Exploratorii neoliticului</td>
+        <td class="c-title">Vizită sit arheologic Dealul Drăghici + Centrul Etnografic Ruginoasa — cultură Cucuteni, patrimoniu local</td>
+        <td class="c-coord">Elefteriu Crina Aurelia<br><span style="font-size:10px;color:var(--ink-muted);">Geografie · Iași</span></td>
+        <td class="c-members">Câtea Florentina Daria<br>Moisa Denis Mihai<br>Nastasia Alexandru (cls. X C)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">X</td>
+        <td class="c-school">Col. Tehnic CF Unirea Pașcani</td>
+        <td class="c-loc">Pașcani</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1vT-fC5KkS_mnHc7353dvvfrgfxcwRinO" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">19</td>
+        <td class="c-team">BRAS</td>
+        <td class="c-title">Spirulina vie în bioreactoare — soluție nutriție superioară vs. risc metale grele produse uscate</td>
+        <td class="c-coord">Oțeleanu Lia Liana<br><span style="font-size:10px;color:var(--ink-muted);">Biologie · Brașov</span></td>
+        <td class="c-members">Smărăndache Anelise (cls. IX)<br>Stănuleț Anastasia (cls. IX)<br>Nicula Delia (cls. IX)</td>
+        <td style="text-align:center;font-weight:600;">3</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">CNI Grigore Moisil</td>
+        <td class="c-loc">Brașov</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1xGT-mBUc0LYBLN9KPyWz-q8biPTVhoHg" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">20</td>
+        <td class="c-team">(individual)</td>
+        <td class="c-title">Reprezentarea femeilor în STEM — stereotipuri, interviu șefă echipă robotică, statistici</td>
+        <td class="c-coord">Rusu Contesina<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · București</span></td>
+        <td class="c-members">Ioan Arina Ilinca (cls. IX)<br><em style='font-size:10px;color:var(--ink-muted);'>participare individuală</em></td>
+        <td style="text-align:center;font-weight:600;">1</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">CN Gheorghe Șincai</td>
+        <td class="c-loc">Sector 4</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1HeG_Z397RNtvuY3pbTF7m1ZLJvyZ1pbb" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">21</td>
+        <td class="c-team">AGAR-GROW</td>
+        <td class="c-title">Cultivarea Agar pe suport solid — soluție poluare agricolă și dietă dezechilibrată</td>
+        <td class="c-coord">Oțeleanu Lia<br><span style="font-size:10px;color:var(--ink-muted);">Biologie · Brașov</span></td>
+        <td class="c-members">Foica Maria (cls. IX)<br><em style='font-size:10px;color:var(--ink-muted);'>participare individuală</em></td>
+        <td style="text-align:center;font-weight:600;">1</td>
+        <td style="text-align:center;">IX</td>
+        <td class="c-school">CNI Grigore Moisil</td>
+        <td class="c-loc">Brașov</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1WLUJ5yX11IQZU9D0ZYLtoYLEiwj6O7GXqnY27Hh82AM" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+      <tr>
+        <td class="c-nr">22</td>
+        <td class="c-team">Foton – Amintire</td>
+        <td class="c-title">Proiect fizică / fotografie (abstract necompletat — verificați fișierul depus)</td>
+        <td class="c-coord">Amorăriței Elena Carmen<br><span style="font-size:10px;color:var(--ink-muted);">Fizică · Suceava</span></td>
+        <td class="c-members">Brădățanu Amos-Antonius (cls. XII D)<br>Băișanu Alexandra (cls. XII D)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">XII</td>
+        <td class="c-school">CN Ștefan cel Mare</td>
+        <td class="c-loc">Suceava</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1YPiNW1xj9SLElwnpjvEvTSKA0LwBhIZb" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-warn">⚠ abstract lipsă</td>
+      </tr>
+      <tr>
+        <td class="c-nr">23</td>
+        <td class="c-team">Mars</td>
+        <td class="c-title">Condiții de viață pe planeta Marte — cerințe supraviețuire, cercetări spațiale recente</td>
+        <td class="c-coord">Roman Cristina-Maria<br><span style="font-size:10px;color:var(--ink-muted);">Geografie · Bistrița-Năsăud</span></td>
+        <td class="c-members">Jucan Laurentiu (cls. IX)<br>Jucan Bianca (cls. XII)</td>
+        <td style="text-align:center;font-weight:600;">2</td>
+        <td style="text-align:center;">IX & XII</td>
+        <td class="c-school">CN Petru Rareș</td>
+        <td class="c-loc">Beclean</td>
+        <td class="c-link"><a href="https://drive.google.com/open?id=1B-WOUi2qtXPVP_tuwoRmrpvr2fxJ500V" target="_blank" style="color:var(--c4m);background:var(--c4bg);">📄 Drive</a></td>
+        <td class="c-flag flag-ok">✓ complet</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:11px;color:var(--ink-muted);margin-top:10px;padding-left:4px;">* Coloanele de notare (C1–C4, TOTAL, Premiu, Observații) se completează în Google Sheets. <a href="https://docs.google.com/spreadsheets/d/1y7O29NECR5_uX15FqVQ70P7JT9RTAqb9hRsNnniHlRw/edit" target="_blank" style="color:var(--c4m);">Deschide grila →</a></p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  TAB 3 — SUMAR GENERAL                            -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div id="tab-sumar" class="section">
+
+  <div class="sheets-banner">
+    <div class="sb-left">
+      <div class="sb-eyebrow">Google Sheets · Centralizator premiare</div>
+      <div class="sb-title">📊 SUMAR – Toate proiectele + premiare finală 2026</div>
+      <div class="sb-note">35 proiecte (Be a STEAMER + Jurnal de Bord). Câmpuri: scor final, premiu, juror 1/2/3, status notificare.</div>
+    </div>
+    <div>
+      <a class="sb-btn" href="https://docs.google.com/spreadsheets/d/1yhJkhsvrG9zeJmXcAjNWTAD13l9fS7uOOE2opcSUnx0/edit" target="_blank">✏️ Deschide Sumar →</a>
+      <a class="sb-btn-sec" href="https://docs.google.com/spreadsheets/d/1yhJkhsvrG9zeJmXcAjNWTAD13l9fS7uOOE2opcSUnx0/export?format=xlsx" target="_blank">⬇ Excel</a>
+    </div>
+  </div>
+
+  <div class="sec-head">
+    <span class="sec-title">📊 Toate proiectele — vedere de ansamblu</span>
+    <span class="sec-count">35 proiecte · 2 concursuri cu înscrisuri în Drive</span>
+  </div>
+
+  <!-- STATS -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:28px;">
+    <div style="background:white;padding:20px;border-radius:4px;border-left:4px solid var(--c1l);box-shadow:0 2px 10px rgba(0,0,0,.05);">
+      <div style="font-size:9.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--c1m);margin-bottom:4px;">🌍 Be a STEAMER</div>
+      <div style="font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--ink);">12</div>
+      <div style="font-size:11px;color:var(--ink-muted);">proiecte depuse · 3 cu abstract lipsă</div>
+    </div>
+    <div style="background:white;padding:20px;border-radius:4px;border-left:4px solid var(--c4l);box-shadow:0 2px 10px rgba(0,0,0,.05);">
+      <div style="font-size:9.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--c4m);margin-bottom:4px;">📓 Jurnal de Bord</div>
+      <div style="font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--ink);">23</div>
+      <div style="font-size:11px;color:var(--ink-muted);">jurnale depuse · 1 cu abstract lipsă</div>
+    </div>
+    <div style="background:white;padding:20px;border-radius:4px;border-left:4px solid var(--gold);box-shadow:0 2px 10px rgba(0,0,0,.05);">
+      <div style="font-size:9.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#8B6E1A;margin-bottom:4px;">📍 Județe reprezentate</div>
+      <div style="font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--ink);">14</div>
+      <div style="font-size:11px;color:var(--ink-muted);">Cluj · Iași · Timiș · Brașov · Vrancea + 9</div>
+    </div>
+    <div style="background:white;padding:20px;border-radius:4px;border-left:4px solid var(--c3l);box-shadow:0 2px 10px rgba(0,0,0,.05);">
+      <div style="font-size:9.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--c3m);margin-bottom:4px;">👨‍🎓 Elevi implicați (est.)</div>
+      <div style="font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--ink);">68</div>
+      <div style="font-size:11px;color:var(--ink-muted);">din 35 de echipe (1–3 elevi / echipă)</div>
+    </div>
+  </div>
+
+  <!-- ALERTS -->
+  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+    <div style="background:#FFF8E0;border-left:4px solid #C8A84B;border-radius:3px;padding:14px 18px;font-size:13px;">
+      <strong>⚠ Proiecte cu abstract necompletat (4)</strong> — Green Vibe, The EcoForce, Eco Duo (Be a STEAMER) + Foton–Amintire (Jurnal). Verificați direct fișierele din Drive înainte de notare.
+    </div>
+    <div style="background:#FFF0E0;border-left:4px solid #C8894A;border-radius:3px;padding:14px 18px;font-size:13px;">
+      <strong>⚠ Posibilă încadrare greșită la concurs (1)</strong> — Balcan Andrei (Pașcani, Be a STEAMER, #11) a investigat calitatea aerului cu senzori — temă mai potrivită pentru Detectivii Poluării. Confirmați cu organizatorii.
+    </div>
+    <div style="background:#EAF2EC;border-left:4px solid var(--c1l);border-radius:3px;padding:14px 18px;font-size:13px;">
+      <strong>ℹ Concentrare Lugoj (Jurnal de Bord)</strong> — 11 din 23 echipe sunt coordonate de prof. Boldea Maria Lucia (Liceul Teoretic Coriolan Brediceanu). Juriul ia notă la deliberare.
+    </div>
+    <div style="background:#E0EEF7;border-left:4px solid var(--c3l);border-radius:3px;padding:14px 18px;font-size:13px;">
+      <strong>ℹ Rock You! și Detectivii Poluării</strong> — nu apar în formularele Drive vizibile. Verificați inbox-ul <strong>cristina.toma@g.unibuc.ro</strong> pentru Rock You! și formularul separat Detectivii Poluării.
+    </div>
+  </div>
+
+  <!-- LINKS TO ALL SHEETS -->
+  <div style="background:white;border-radius:6px;padding:24px 28px;box-shadow:0 2px 14px rgba(0,0,0,.06);">
+    <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:16px;">📋 Toate documentele de jurizare</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;">
+      <a href="https://docs.google.com/spreadsheets/d/15HA7qbZTWixhdw6MkU3x5D34tuic8zUS4iQsXUqnRgc/edit" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--c1bg);border-radius:4px;border-left:4px solid var(--c1l);text-decoration:none;">
+        <span style="font-size:22px;">🌍</span>
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--c1m);">Be a STEAMER — Grilă jurizare</div>
+          <div style="font-size:11px;color:var(--ink-muted);">12 proiecte · 5 criterii · /100</div>
+        </div>
+      </a>
+      <a href="https://docs.google.com/spreadsheets/d/1y7O29NECR5_uX15FqVQ70P7JT9RTAqb9hRsNnniHlRw/edit" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--c4bg);border-radius:4px;border-left:4px solid var(--c4l);text-decoration:none;">
+        <span style="font-size:22px;">📓</span>
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--c4m);">Jurnal de Bord — Grilă jurizare</div>
+          <div style="font-size:11px;color:var(--ink-muted);">23 proiecte · 4 criterii · /100</div>
+        </div>
+      </a>
+      <a href="https://docs.google.com/spreadsheets/d/1yhJkhsvrG9zeJmXcAjNWTAD13l9fS7uOOE2opcSUnx0/edit" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg);border-radius:4px;border-left:4px solid var(--gold);text-decoration:none;">
+        <span style="font-size:22px;">📊</span>
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#8B6E1A;">Sumar general — premiare finală</div>
+          <div style="font-size:11px;color:var(--ink-muted);">35 proiecte · juror 1/2/3 · notificare</div>
+        </div>
+      </a>
+      <a href="https://docs.google.com/spreadsheets/d/1eJSu6RxHTuP25GY3QWexv2pVp6xR57xsDexGmKN83dM/edit" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg);border-radius:4px;border-left:4px solid var(--ink-muted);text-decoration:none;">
+        <span style="font-size:22px;">📥</span>
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--ink);">Formulare de înscriere (original)</div>
+          <div style="font-size:11px;color:var(--ink-muted);">Răspunsuri brute Google Form</div>
+        </div>
+      </a>
+      <a href="https://drive.google.com/drive/folders/1S0vb3kURxnKFf9Iaim4mvBKePM36Bjy9" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg);border-radius:4px;border-left:4px solid var(--ink-muted);text-decoration:none;">
+        <span style="font-size:22px;">📁</span>
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--ink);">Folder Drive — proiecte depuse</div>
+          <div style="font-size:11px;color:var(--ink-muted);">Fișiere Be a STEAMER + Jurnal + GDPR</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="footer-brand">STEAM EXPERIENCE · Jurizare 2026</div>
+    <div class="footer-text">PN-IV-P10-SS-SC-2024-0042 · Coordonator: INCDFP – GeoEduLab · Parteneri: UB-FGG · UBB-FSIM<br>Document de lucru intern. Scorurile se introduc în Google Sheets; acest HTML servește ca interfață de navigare.</div>
+  </div>
+  <div class="footer-links">
+    <a href="mailto:steam.experience@infp.ro">steam.experience@infp.ro</a>
+    <a href="https://geoedulab.infp.ro/steam-experience" target="_blank">geoedulab.infp.ro/steam-experience</a>
+  </div>
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+
+</body>
+</html>
