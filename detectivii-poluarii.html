@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rezultate Concurs Detectivii Poluării 2026 — STEAM EXPERIENCE</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#1a1a1a; --ink-soft:#4a4a4a; --ink-muted:#888884;
+    --bg:#eef3f4; --cream:#fbfdfd; --gold:#c8a84b; --gold-soft:rgba(200,168,75,0.12);
+    --water:#0b3450; --water-mid:#1a5c8a; --water-light:#3a9bd5; --water-soft:rgba(26,92,138,0.10);
+    --rank1:#d4af37; --rank2:#9a9a9a; --rank3:#c17a3f; --mention:#3a6ea5; --special:#2d8a7a; --diploma:#6a6a6a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--ink); line-height:1.6; -webkit-font-smoothing:antialiased; }
+  .hero { background:var(--ink); color:white; position:relative; overflow:hidden; }
+  .hero-bg { position:absolute; inset:0; background:
+      radial-gradient(ellipse 70% 60% at 78% 28%, rgba(58,155,213,0.20) 0%, transparent 65%),
+      radial-gradient(ellipse 55% 80% at 6% 88%, rgba(200,168,75,0.12) 0%, transparent 60%),
+      linear-gradient(135deg,#08222F 0%,#10242C 55%,#0B3450 100%); }
+  .hero-grid { position:absolute; inset:0; background-image:
+      linear-gradient(rgba(58,155,213,0.06) 1px,transparent 1px),
+      linear-gradient(90deg, rgba(58,155,213,0.06) 1px,transparent 1px); background-size:44px 44px; }
+  .hero-content { position:relative; z-index:2; padding:56px 60px 48px; }
+  .hero-eyebrow { font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:var(--water-light); margin-bottom:16px; }
+  .hero-title { font-family:'Syne',sans-serif; font-size:clamp(34px,5vw,54px); font-weight:800; line-height:1; letter-spacing:-1.5px; margin-bottom:14px; }
+  .hero-title span { color:var(--water-light); }
+  .hero-sub { font-size:14.5px; font-weight:300; color:rgba(255,255,255,0.62); max-width:640px; line-height:1.65; }
+  .hero-stripe { height:5px; background:linear-gradient(90deg, var(--rank1) 0 18%, var(--rank2) 18% 36%, var(--rank3) 36% 54%, var(--mention) 54% 72%, var(--special) 72% 100%); }
+  .container { max-width:1340px; margin:0 auto; padding:48px 28px; }
+  .section-title { font-family:'Syne',sans-serif; font-size:22px; font-weight:700; letter-spacing:-0.5px; margin:8px 0 8px; border-left:4px solid var(--water-mid); padding-left:16px; }
+  .section-intro { font-size:14px; color:var(--ink-soft); font-weight:300; max-width:880px; margin:0 0 28px 20px; line-height:1.7; }
+  .method { background:var(--cream); border-radius:6px; padding:28px 32px; box-shadow:0 2px 14px rgba(0,0,0,0.05); margin-bottom:44px; border-top:3px solid var(--water-mid); }
+  .method h3 { font-family:'Syne',sans-serif; font-size:16px; margin-bottom:16px; }
+  .crit-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin-bottom:20px; }
+  .crit { background:var(--bg); border-radius:4px; padding:14px 16px; border-left:3px solid var(--water-light); }
+  .crit-code { font-family:'Syne',sans-serif; font-weight:700; font-size:13px; color:var(--water-mid); margin-bottom:4px; }
+  .crit-desc { font-size:12px; color:var(--ink-soft); line-height:1.45; }
+  .method-principle { font-size:13.5px; color:var(--ink-soft); line-height:1.7; background:var(--water-soft); border-radius:4px; padding:16px 18px; border-left:3px solid var(--water-mid); }
+  .method-principle strong { color:var(--ink); }
+  table { width:100%; border-collapse:collapse; background:white; box-shadow:0 2px 16px rgba(0,0,0,0.07); border-radius:6px; overflow:hidden; margin-bottom:36px; font-size:13px; }
+  thead th { background:var(--ink); color:white; padding:13px 9px; text-align:center; font-weight:600; font-size:11px; letter-spacing:0.2px; }
+  thead th.left { text-align:left; }
+  tbody td { padding:12px 9px; border-bottom:1px solid rgba(0,0,0,0.07); text-align:center; vertical-align:top; }
+  tbody td.left { text-align:left; }
+  tbody td.obs { text-align:left; font-size:12px; color:var(--ink-soft); line-height:1.5; min-width:260px; }
+  tbody tr:last-child td { border-bottom:none; }
+  .team-name { font-weight:700; font-family:'Syne',sans-serif; font-size:13.5px; }
+  .team-meta { font-size:10.5px; color:var(--ink-muted); font-weight:400; margin-top:2px; line-height:1.4; }
+  .total { font-family:'Syne',sans-serif; font-weight:800; font-size:15px; }
+  .place-badge { display:inline-block; padding:4px 10px; border-radius:20px; font-size:10.5px; font-weight:600; white-space:nowrap; }
+  .b-1 { background:rgba(212,175,55,0.18); color:#8a6d1a; }
+  .b-2 { background:rgba(154,154,154,0.22); color:#5a5a5a; }
+  .b-3 { background:rgba(193,122,63,0.18); color:#9a5a28; }
+  .b-m { background:rgba(58,110,165,0.14); color:var(--mention); }
+  .b-s { background:rgba(45,138,122,0.15); color:var(--special); }
+  .b-d { background:rgba(106,106,106,0.12); color:var(--diploma); }
+  .row-1 { background:rgba(212,175,55,0.06); }
+  .legend { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 30px 20px; }
+  .legend span { font-size:11.5px; color:var(--ink-soft); display:inline-flex; align-items:center; gap:6px; }
+  .footer { background:var(--ink); color:white; padding:36px 60px; margin-top:24px; }
+  .footer-brand { font-family:'Syne',sans-serif; font-size:17px; font-weight:700; color:var(--water-light); margin-bottom:8px; }
+  .footer-text { font-size:12px; color:rgba(255,255,255,0.45); line-height:1.7; max-width:680px; }
+  .footer-note { font-size:11.5px; color:rgba(255,255,255,0.6); line-height:1.7; margin-top:14px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.12); }
+  @media (max-width:820px){
+    .hero-content{padding:40px 24px;} .container{padding:32px 16px;} .method{padding:20px;}
+    table{font-size:11px; display:block; overflow-x:auto; white-space:nowrap;}
+    tbody td.obs{white-space:normal; min-width:220px;}
+    .footer{padding:28px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">STEAM EXPERIENCE · Concurs Național 2026</div>
+    <h1 class="hero-title">Detectivii Poluării — <span>Rezultatele jurizării</span></h1>
+    <p class="hero-sub">
+      Investigăm calitatea mediului din comunitatea noastră. Evaluarea celor 23 de proiecte finaliste,
+      pe baza criteriilor din regulament. Punctajele reprezintă media acordată de cei trei evaluatori.
+    </p>
+  </div>
+</div>
+<div class="hero-stripe"></div>
+
+<div class="container">
+
+  <div class="method">
+    <h3>Cum am evaluat</h3>
+    <div class="crit-grid">
+      <div class="crit"><div class="crit-code">C1 · 25p</div><div class="crit-desc">Relevanța și importanța problemei investigate</div></div>
+      <div class="crit"><div class="crit-code">C2 · 25p</div><div class="crit-desc">Corectitudinea științifică și calitatea documentării</div></div>
+      <div class="crit"><div class="crit-code">C3 · 25p</div><div class="crit-desc">Calitatea analizei datelor și interpretarea rezultatelor</div></div>
+      <div class="crit"><div class="crit-code">C4 · 25p</div><div class="crit-desc">Caracterul aplicativ și realismul soluțiilor propuse</div></div>
+    </div>
+    <div class="method-principle">
+      <strong>Punctaj final:</strong> fiecare proiect a fost evaluat independent de <strong>trei membri ai juriului</strong>, iar punctajul afișat pe fiecare criteriu reprezintă <strong>media celor trei evaluări</strong>. Totalul este pe o scară de la 0 la 100. Observațiile rezumă aprecierile juriului și sunt formulate ca repere de îmbunătățire pentru proiectele viitoare.
+    </div>
+  </div>
+
+  <h2 class="section-title">Clasament final</h2>
+  <p class="section-intro">Cele 23 de proiecte finaliste din secțiunea Detectivii Poluării, ordonate după media generală. Premiile au fost stabilite de juriu.</p>
+
+  <div class="legend">
+    <span>🥇 Premiul I</span><span>🥈 Premiul II</span><span>🥉 Premiul III</span>
+    <span>⭐ Mențiune</span><span>🔬 Premiu special — Curiozitate Științifică</span><span>Diplomă de participare</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="left">Echipă</th>
+        <th>C1<br><small>/25</small></th>
+        <th>C2<br><small>/25</small></th>
+        <th>C3<br><small>/25</small></th>
+        <th>C4<br><small>/25</small></th>
+        <th>Medie<br><small>/100</small></th>
+        <th>Rezultat</th>
+        <th class="left">Observații</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-1">
+        <td class="left"><div class="team-name">Exploratorii</div><div class="team-meta">„Pârâul Peța” · Colegiul Național Mihai Eminescu, Oradea (Bihor) · cls IX · prof. Maghiar Ramona</div></td>
+        <td>24.7</td><td>24.3</td><td>25.0</td><td>23.7</td>
+        <td class="total">97.7</td>
+        <td><span class="place-badge b-1">🥇 Premiul I</span></td>
+        <td class="obs">Documentare bună și analize proprii, cu date despre problemele de mediu semnalate și o interpretare corectă a rezultatelor. Pentru o lucrare completă, ar mai fi fost utilă o listă bibliografică.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">LTNiX – Detectivul poluării</div><div class="team-meta">„The future is now” · Liceul Teoretic Național, București (Ilfov) · cls X · prof. Gorănel Iuliana-Steluța</div></td>
+        <td>24.7</td><td>24.0</td><td>24.0</td><td>24.0</td>
+        <td class="total">96.7</td>
+        <td><span class="place-badge b-2">🥈 Premiul II</span></td>
+        <td class="obs">Elevii au proiectat și folosit un sistem mobil de monitorizare a parametrilor calității aerului, cu o prezentare amplă și detalii accesibile prin cod QR.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">Misiunea Albastră</div><div class="team-meta">„Apa – sângele pământului” · Colegiul Național „Ion Luca Caragiale”, Ploiești (Prahova) · cls XI · prof. Leotescu Raluca</div></td>
+        <td>24.0</td><td>23.0</td><td>24.3</td><td>24.0</td>
+        <td class="total">95.3</td>
+        <td><span class="place-badge b-3">🥉 Premiul III</span></td>
+        <td class="obs">Date experimentale proprii din analiza a două probe de apă (rețeaua Ploiești și Pucioasa) și o privire asupra impactului păstrării apei îmbuteliate în ambalaje PET. Abordare practică, cu experimente realizate de echipă.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">ECO DUO</div><div class="team-meta">„Regenerare urbană: Piața Gării” · Colegiul Tehnic Ana Aslan, Cluj-Napoca (Cluj) · cls X · prof. Niste Simona</div></td>
+        <td>23.3</td><td>23.7</td><td>24.0</td><td>23.7</td>
+        <td class="total">94.7</td>
+        <td><span class="place-badge b-m">⭐ Mențiune</span></td>
+        <td class="obs">Documentare bună și date experimentale proprii. Datele obținute ar fi fost și mai ușor de urmărit prezentate sub formă de grafice (slide 8).</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">TDS Investigators</div><div class="team-meta">„Dinamica TDS în apele subterane din zona Siretului Mijlociu” · Col. Tehnic CF Unirea Pașcani, Pașcani (Iași) · cls X · prof. Elefteriu Crina Aurelia</div></td>
+        <td>24.0</td><td>23.7</td><td>22.3</td><td>23.7</td>
+        <td class="total">93.7</td>
+        <td><span class="place-badge b-m">⭐ Mențiune</span></td>
+        <td class="obs">Documentare bună, metodologie clară și rezultate susținute de date experimentale proprii.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">Cercetătorii aerului curat</div><div class="team-meta">„Poluarea aerului din traficul intens, Lugoj” · Liceul Teoretic „Coriolan Brediceanu”, Lugoj (Timiș) · cls IX · prof. Boldea Maria Lucia</div></td>
+        <td>24.3</td><td>23.0</td><td>23.0</td><td>23.0</td>
+        <td class="total">93.3</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Lucrare bine documentată, cu prezentare clară a datelor și soluții fezabile, adaptate zonei Lugoj.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">Vianu Detectives</div><div class="team-meta">„Poluarea luminoasă” · CNI „Tudor Vianu”, București (București) · cls XI · prof. Stoica Ioana</div></td>
+        <td>23.0</td><td>23.3</td><td>23.0</td><td>23.3</td>
+        <td class="total">92.6</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Temă mai puțin obișnuită (poluarea luminoasă), abordată cu interes. Ar fi fost utile mai multe detalii de metodologie (scara Bortle) și verificarea codului QR, care nu a funcționat.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">Vlădeasa</div><div class="team-meta">„Poluarea râului Crișul Repede, Huedin” · Liceul Tehnologic Vlădeasa Huedin, Huedin (Cluj) · cls VI · prof. Scripcă Sabina</div></td>
+        <td>23.3</td><td>20.7</td><td>19.3</td><td>23.0</td>
+        <td class="total">86.3</td>
+        <td><span class="place-badge b-s">🔬 Premiu special</span></td>
+        <td class="obs">Metodologie și implicare potrivite pentru elevi de clasa a VI-a — o participare care arată curiozitate și entuziasm pentru cercetare.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">Detectivii poluării – Pașcani</div><div class="team-meta">„Detectivii poluării – Pașcani 2026” · Col. Tehnic CF Unirea Pașcani, Pașcani (Iași) · cls X · prof. Elefteriu Crina Aurelia</div></td>
+        <td>21.3</td><td>20.7</td><td>21.7</td><td>20.7</td>
+        <td class="total">84.4</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Date experimentale proprii. Partea de documentare ar putea fi dezvoltată, iar rezultatele ar fi mai clare prezentate sub formă de grafice sau tabele.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">LUPY</div><div class="team-meta">„Poluarea Lugojului – zona industrială” · Liceul Teoretic „Coriolan Brediceanu”, Lugoj (Timiș) · cls IX · prof. Boldea Maria Lucia</div></td>
+        <td>23.3</td><td>20.0</td><td>20.0</td><td>20.0</td>
+        <td class="total">83.3</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Prezintă surse variate de poluare pentru apă, aer și sol. Lucrarea ar câștiga prin alegerea unui studiu de caz concret, discutat în detaliu.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">VIktoriosi</div><div class="team-meta">„Poluarea aerului – groapa de gunoi Ghizela” · Liceul Teoretic „Coriolan Brediceanu”, Lugoj (Timiș) · cls IX · prof. Boldea Maria Lucia</div></td>
+        <td>21.7</td><td>20.7</td><td>18.3</td><td>19.7</td>
+        <td class="total">80.4</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Documentare bună. Un accent mai mare pe analiza și interpretarea datelor ar ridica nivelul lucrării.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">Ecologistii67</div><div class="team-meta">„Poluarea solului în zona Lugoj” · Liceul Teoretic „Coriolan Brediceanu”, Lugoj (Timiș) · cls IX · prof. Boldea Maria Lucia</div></td>
+        <td>22.0</td><td>19.7</td><td>19.3</td><td>19.3</td>
+        <td class="total">80.3</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Temă relevantă pentru zonă. Lucrarea ar fi mai puternică prin date concrete, dincolo de informațiile cu caracter general (slide 6).</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">HONOLULU</div><div class="team-meta">„Detectivii mediului: solul orașului Câmpia Turzii” · Liceul Teoretic „Pavel Dan”, Câmpia Turzii (Cluj) · cls IX–X · prof. Vînătoru Irina-Adina</div></td>
+        <td>22.0</td><td>19.3</td><td>18.3</td><td>19.7</td>
+        <td class="total">79.3</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Poster îngrijit, cu grafică atentă. Deși sunt menționate metalele vizate (Pb, Zn, Cr, Cu, Fe), ar fi fost utile date și detalii despre acestea din articole și surse de presă.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">Matcha</div><div class="team-meta">„Eco-alarmă: poluarea accidentală” · Liceul Teoretic „Coriolan Brediceanu”, Lugoj (Timiș) · cls IX · prof. Boldea Maria Lucia</div></td>
+        <td>21.7</td><td>19.3</td><td>18.7</td><td>19.3</td>
+        <td class="total">79.0</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Acoperă aspecte despre poluarea apei, solului și aerului. Un studiu de caz anume, discutat în detaliu, ar fi întărit lucrarea.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">Cercetătorii C&A</div><div class="team-meta">„Efectele poluării asupra insulei Cotu Mic” · Liceul Teoretic „Coriolan Brediceanu”, Lugoj (Timiș) · cls IX · prof. Boldea Maria Lucia</div></td>
+        <td>21.7</td><td>18.3</td><td>19.3</td><td>19.3</td>
+        <td class="total">78.6</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Chiar fără date experimentale, documentarea este bine structurată și include o activitate de ecologizare, plus soluții concrete și fezabile pentru zonă. Are și bibliografie.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">Detectivii poluarii</div><div class="team-meta">„Detectivii poluării” · Liceul Teoretic „Horia Hulubei”, Măgurele (Ilfov) · cls VII · prof. Ungureanu Ioana</div></td>
+        <td>22.0</td><td>19.0</td><td>17.3</td><td>20.0</td>
+        <td class="total">78.3</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Bază bună de pornire. Lucrarea ar câștiga prin detalierea uneia dintre activitățile educative realizate cu elevii și prin aspecte mai concrete.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">Bredistars</div><div class="team-meta">„Poluarea apei” · Liceul Teoretic „Coriolan Brediceanu”, Lugoj (Timiș) · cls IX · prof. Boldea Maria Lucia</div></td>
+        <td>21.3</td><td>19.3</td><td>18.3</td><td>19.0</td>
+        <td class="total">77.9</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Prezintă mai multe probleme de mediu. Lucrarea ar fi mai solidă cu trimiteri bibliografice și cu date mai specifice, dincolo de cele generale.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">Rădăcinile de Oțel</div><div class="team-meta">„Poluarea episodică” · Liceul Teoretic „Coriolan Brediceanu”, Lugoj (Timiș) · cls IX · prof. Boldea Maria Lucia</div></td>
+        <td>20.0</td><td>20.3</td><td>18.0</td><td>18.7</td>
+        <td class="total">77.0</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Tema aleasă are potențial. Studiul de caz și interpretarea datelor ar merita dezvoltate mai mult (slide 7).</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">The EcoForce</div><div class="team-meta">„Ecoul traficului din Gilău” · Col. Tehnic Ana Aslan, Cluj-Napoca (Cluj) · cls X · prof. Niste Simona</div></td>
+        <td>20.7</td><td>18.7</td><td>19.0</td><td>18.3</td>
+        <td class="total">76.7</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Structură corectă a proiectului. Secțiunile de documentare, analiză și interpretare a datelor ar putea fi dezvoltate mai mult.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">TIRI MIRI</div><div class="team-meta">„Poluarea apei” · Liceul Teoretic „Coriolan Brediceanu”, Lugoj (Timiș) · cls IX · prof. Boldea Maria Lucia</div></td>
+        <td>21.3</td><td>18.3</td><td>18.0</td><td>18.7</td>
+        <td class="total">76.3</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Lucrarea ar câștiga prin date mai specifice și prin referirea la un fenomen de poluare concret, semnalat în presă sau de autorități.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">LA IORGO SI VAN</div><div class="team-meta">„Podul de fier din Lugoj” · Liceul Teoretic „Coriolan Brediceanu”, Lugoj (Timiș) · cls IX · prof. Boldea Maria Lucia</div></td>
+        <td>19.3</td><td>18.7</td><td>18.0</td><td>19.7</td>
+        <td class="total">75.7</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Fără parte practică, dar cu detalii din presă, context istoric, măsuri propuse și bibliografie — o documentare bine întocmită.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">Cosmeleata Raul</div><div class="team-meta">„Provocările regenerabile urbane și ecologice” · Colegiul Tehnic Ana Aslan, Cluj-Napoca (Cluj) · cls X · prof. Niste Simona</div></td>
+        <td>21.0</td><td>17.3</td><td>16.0</td><td>20.0</td>
+        <td class="total">74.3</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Documentare bună. Metodologia ar avea nevoie de mai multe detalii, iar rezultatele ar trebui completate (dincolo de valoarea calității aerului, slide 6). Ar fi utilă și o bibliografie.</td>
+      </tr>
+      <tr class="">
+        <td class="left"><div class="team-name">CD-ul schimbării</div><div class="team-meta">„Natura nu se negociază, se protejează” · Colegiul Național Gheorghe Șincai, București (Ilfov) · cls IX · prof. Rusu Contesina</div></td>
+        <td>20.7</td><td>17.3</td><td>16.7</td><td>18.3</td>
+        <td class="total">73.0</td>
+        <td><span class="place-badge b-d">Diplomă de participare</span></td>
+        <td class="obs">Mesaj de mediu bine intenționat. Datele ar fi mai convingătoare susținute cu surse bibliografice, fotografii, interviuri sau informații din presă.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="footer">
+  <div class="footer-brand">STEAM EXPERIENCE</div>
+  <div class="footer-text">
+    Proiect finanțat de Ministerul Educației și Cercetării prin UEFISCDI — PNCDI IV — Știința în Școli,
+    proiect PN-IV-P10-SS-SC-2024-0042. Coordonator: INCDFP – GeoEduLab. Parteneri: UB-FGG · UBB-FSIM.
+    Secțiunea Detectivii Poluării este coordonată de UBB – Facultatea de Știința și Ingineria Mediului.
+  </div>
+  <div class="footer-note">
+    Evaluare realizată pentru secțiunea Detectivii Poluării (23 de proiecte finaliste). Punctajele reprezintă media celor trei evaluatori, pe criteriile din regulament. Observațiile sunt formulate în scop educativ, pentru a recunoaște munca fiecărei echipe și a oferi repere de îmbunătățire.
+  </div>
+</div>
+
+</body>
+</html>
